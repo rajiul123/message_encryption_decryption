@@ -13,7 +13,7 @@ def display_menu():
             break
         else:
             print('Enter a valid option')
-          
+
     if cmd == '1':
         key = int(input("Enter encryption/decryption key: "))
     elif cmd == '2':
@@ -124,7 +124,7 @@ class EncryptDecrypt:
             else: 
                 self.j = self.i - self._encr_decr_key
                 if self.j < 1:
-                    self.j = self.j + 27
+                    self.j = self.j + 26
                     self.lst_indx_new.append(self.j)
                 else:
                     self.lst_indx_new.append(self.j)
