@@ -1,0 +1,87 @@
+def display_menu():
+    print("""
+            1. Enter encryption/decryption key
+            2. Encrypt a message
+            3. Decrypt a message
+            4. Exit
+            """)
+    while True:
+        cmd = input('Type an option: ')
+        if cmd in ['1', '2', '3', '4']:
+            break
+        else:
+            print('Enter a valid option')
+            
+    if cmd == '1':
+        key = input("Enter encryption/decryption key: ")
+    elif cmd == '2':
+        key = input("Enter encryption/decryption key: ")
+        msg = input("Which message do you want to encrypt: ").lower()
+        encryption = EncryptDecrypt(key, msg)
+        print(encryption.encrypt())
+    elif cmd == '3':
+        key = input("Enter encryption/decryption key: ")
+        msg = input("Which message do you want to decrypt: ").lower()
+    elif cmd == '4':
+        pass
+
+class EncryptDecrypt:
+    def __init__(self, encr_decr_key, message):
+        self.encr_decr_key = encr_decr_key
+        self.message = message
+
+    @property
+    def encr_decr_key(self):
+        return self._encr_decr_key
+
+    @encr_decr_key.setter
+    def encr_decr_key(self, value):
+        if int(value) > 1 and int(value) < 26:
+            self._encr_decr_key = value
+        else:
+            raise ValueError("Value must be in 1 to 26")
+
+    def encrypt(self):
+        self.alphabet = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5, 'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10, 'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15, 'p': 16, 'q': 17, 'r': 18, 's': 19, 't': 20, 'u': 21, 'v': 22, 'w': 23, 'x': 24, 'y': 25, 'z': 26}
+
+        self.lst_indx = []
+        self.spc = ' '
+        for self.char in self.message:
+            if self.spc not in self.message:
+                for self.key, self.value in self.alphabet.items():
+                    if self.char == self.key:
+                        self.lst_indx.append(self.value)
+            else:
+                self.words = self.message.split()
+                for self.word in self.words:
+                    for self.char in self.word:
+                        for self.key, self.value in self.alphabet.items():
+                            self.lst_indx.append(self.value)
+
+        return self.lst_indx
+
+        self.lst_indx_new = []
+        for i in self.lst_indx:
+            j = i + self._encr_decr_key
+            if j > 26:
+                j = j - 26
+                self.lst_indx_new.append(j)
+            else:
+                self.lst_indx_new.append(j)
+
+        return self.lst_indx_new
+
+        self.new_msg = []
+        for i in self.lst_indx_new:
+            if i in self.alphabet.item():
+                self.new_msg.append(alphabet.key())
+
+        self.ready_msg = ''
+        if len(self.new_msg) < 2:
+            self.ready_msg = ''.join(self.new_msg)
+        else:
+            self.ready_msg = ' '.join(self.new_msg)
+
+        return self.ready_msg
+
+display_menu()
