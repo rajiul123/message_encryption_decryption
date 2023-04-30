@@ -15,19 +15,41 @@ def display_menu():
             print('Enter a valid option')
 
     if cmd == '1':
-        key = int(input("Enter encryption/decryption key: "))
+        option_1()
     elif cmd == '2':
-        key = int(input("Enter encryption/decryption key: "))
-        msg = input("Which message do you want to encrypt: ").lower()
+        option_2()
+    elif cmd == '3':
+        option_3()
+    elif cmd == '4':
+        option_4()
+
+
+# option function
+
+def option_1():
+    key = int(input("Enter encryption/decryption key (Between 1 and 25): "))
+    return key
+
+def option_2():
+    key = option_1()
+    msg = input("Which message do you want to encrypt: ").lower()
+    try:
         encryption = EncryptDecrypt(key, msg)
         print(encryption.encrypt())
-    elif cmd == '3':
-        key = int(input("Enter encryption/decryption key: "))
-        msg = input("Which message do you want to decrypt: ").lower()
+    except ValueError:
+        print('The encryption/decryption key you have entered is not correct.')
+
+def option_3():
+    key = option_1()
+    msg = input("Which message do you want to decrypt: ").lower()
+    try:
         decryption = EncryptDecrypt(key, msg)
         print(decryption.decrypt())
-    elif cmd == '4':
-        pass
+    except ValueError:
+        print('The encryption/decryption key you have entered is not correct.')
+
+def option_4():
+    pass
 
 #creating a class to encrypt and decrypt message
     
