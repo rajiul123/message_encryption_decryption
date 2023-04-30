@@ -27,7 +27,15 @@ def display_menu():
 # option function
 
 def option_1():
-    key = int(input("Enter encryption/decryption key (Between 1 and 25): "))
+    while True:
+        try:
+            key = int(input("Enter encryption/decryption key (Between 1 and 25): "))
+            if key in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 25]:
+                    break
+            else:
+                print('The key you have entered is not in the range.')
+        except ValueError:
+            print('This is not an integer value.')
     return key
 
 def option_2():
@@ -36,7 +44,7 @@ def option_2():
     try:
         encryption = EncryptDecrypt(key, msg)
         print(encryption.encrypt())
-    except ValueError:
+    except ValueError or TypeError:
         print('The encryption/decryption key you have entered is not correct.')
 
 def option_3():
